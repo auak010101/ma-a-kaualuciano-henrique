@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
+    int score = 0;
+    public Text scoreText;
 
     private void Update()
     {
@@ -13,8 +14,10 @@ public class Basket : MonoBehaviour
         transform.position = new Vector3(mouseX, -3,-3 );
     }
 
-    void OnTriggerEnter2D(Collider2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        print("collided");
+        score++;
+        scoreText.text = "Score: " + score;
+        Destroy(collision.gameObject);
     }
 }
